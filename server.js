@@ -38,6 +38,15 @@ app.get('/app/flip/', (req, res) => {
 })
 
 app.get('/app/flips/:number', (req, res) => {
+    // param validation - check if integer
+    if (!Number.isInteger(parseInt(req.params.number))) {
+        // HTTP responses, using mozilla status codes
+        res.statusCode = 400
+        res.statusMessage = 'The server cannot process the request due to client error'
+        res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
+        res.end()
+        return
+    }
     // HTTP responses, using mozilla status codes
     res.statusCode = 202;
     res.statusMessage = 'The request has been received but not yet acted upon'

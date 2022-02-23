@@ -12,11 +12,6 @@ const server = app.listen(port, () => {
     console.log('App listening on port %PORT%'.replace('%PORT%',port))
 });
 
-// Default response for any other request
-app.use(function(req, res){
-    res.status(404).send('404 NOT FOUND')
-});
-
 app.get('/app/', (req, res) => {
     // Respond with status 200
         res.statusCode = 200;
@@ -25,3 +20,9 @@ app.get('/app/', (req, res) => {
         res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
         res.end(res.statusCode+ ' ' +res.statusMessage)
     });
+    
+// Default response for any other request
+app.use(function(req, res){
+    res.status(404).send('404 NOT FOUND')
+});
+

@@ -35,8 +35,12 @@ app.get('/app/flip/', (req, res) => {
 app.get('/app/flips/:number', (req, res) => {
 	const flips = coinFlips(req.params.number)
     const sumFlips = countFlips(flips)
-    res.send("{\"raw\":[" + flips + "],\"summary\":{\"tails\":" + sumFlips.tails + "\"heads\":" + sumFlips.heads + "}")
-	res.end()
+    res.end("{\"raw\":[" + flips + "],\"summary\":{\"tails\":" + sumFlips.tails + "\"heads\":" + sumFlips.heads + "}")
+});
+
+app.get('/app/flip/call/:call', (req, res) => {
+	const flip = flipACoin(req.params.call)
+    res.end("{\"call\":\"" + flip.call + "\",\"flip\":\"" + flip.flip + "\",\"result\":\"" + flip.result + "\"}")
 });
 
 // Default response for any other request

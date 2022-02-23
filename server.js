@@ -49,11 +49,21 @@ app.get('/app/flips/:number', (req, res) => {
 });
 
 app.get('/app/flip/call/:call', (req, res) => {
+    // param validation
+    if (req.params.call !== 'tails' && req.params.call !== 'heads') {
+        // HTTP responses, using mozilla status codes
+        res.statusCode = 400
+        res.statusMessage = 'The server cannot process the request due to client error'
+        res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
+        res.end()
+        return
+    }
+
     // HTTP responses, using mozilla status codes
     res.statusCode = 202;
     res.statusMessage = 'The request has been received but not yet acted upon'
     res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
-    
+
 	const flip = flipACoin(req.params.call)
     res.end("{\"call\":\"" + flip.call + "\",\"flip\":\"" + flip.flip + "\",\"result\":\"" + flip.result + "\"}")
 });

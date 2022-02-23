@@ -26,9 +26,10 @@ app.get('/app/', (req, res) => {
     });
 
 app.get('/app/flip/', (req, res) => {
-     
-    // Call flip module
-    console.log(coinFlip())
+    // String cleanup to get last part of path easily
+    const path = req.path.substring(0, req.path.length-1)
+    // Call flip module and set end with result
+    res.end("{\"" + path.substring(path.lastIndexOf('/') + 1) + "\":\"" + coinFlip() + "\"}")
 })
 // Default response for any other request
 app.use(function(req, res){

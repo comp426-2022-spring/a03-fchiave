@@ -26,6 +26,11 @@ app.get('/app/', (req, res) => {
     });
 
 app.get('/app/flip/', (req, res) => {
+    // HTTP responses, using mozilla status codes
+    res.statusCode = 202;
+    res.statusMessage = 'The request has been received but not yet acted upon'
+    res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
+
     // String cleanup to get last part of path easily
     const path = req.path.substring(0, req.path.length-1)
     // Call flip module and set end with result
@@ -33,12 +38,22 @@ app.get('/app/flip/', (req, res) => {
 })
 
 app.get('/app/flips/:number', (req, res) => {
+    // HTTP responses, using mozilla status codes
+    res.statusCode = 202;
+    res.statusMessage = 'The request has been received but not yet acted upon'
+    res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
+
 	const flips = coinFlips(req.params.number)
     const sumFlips = countFlips(flips)
     res.end("{\"raw\":[" + flips + "],\"summary\":{\"tails\":" + sumFlips.tails + "\"heads\":" + sumFlips.heads + "}")
 });
 
 app.get('/app/flip/call/:call', (req, res) => {
+    // HTTP responses, using mozilla status codes
+    res.statusCode = 202;
+    res.statusMessage = 'The request has been received but not yet acted upon'
+    res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
+    
 	const flip = flipACoin(req.params.call)
     res.end("{\"call\":\"" + flip.call + "\",\"flip\":\"" + flip.flip + "\",\"result\":\"" + flip.result + "\"}")
 });

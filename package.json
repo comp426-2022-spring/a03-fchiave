@@ -1,0 +1,19 @@
+{
+  "name": "a03-fchiave",
+  "version": "1.0.0",
+  "description": "\"api using express.js and coins\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp426-2022-spring/a03-fchiave.git"
+  },
+  "author": "Felipe Chiavegatto",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/comp426-2022-spring/a03-fchiave/issues"
+  },
+  "homepage": "https://github.com/comp426-2022-spring/a03-fchiave#readme"
+}

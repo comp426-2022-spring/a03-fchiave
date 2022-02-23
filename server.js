@@ -1,5 +1,5 @@
 // Import coin methods
-import {coinFlip} from './modules/coin.mjs';
+import {coinFlip, coinFlips, countFlips, flipACoin} from './modules/coin.mjs';
 // Require Express.js
 import express from 'express'
 const app = express()
@@ -31,6 +31,14 @@ app.get('/app/flip/', (req, res) => {
     // Call flip module and set end with result
     res.end("{\"" + path.substring(path.lastIndexOf('/') + 1) + "\":\"" + coinFlip() + "\"}")
 })
+
+app.get('/app/flips/:number', (req, res) => {
+	const flips = coinFlips(req.params.number)
+    const sumFlips = countFlips(flips)
+    res.send("{\"raw\":[" + flips + "],\"summary\":{\"tails\":" + sumFlips.tails + "\"heads\":" + sumFlips.heads + "}")
+	res.end()
+});
+
 // Default response for any other request
 app.use(function(req, res){
     res.status(404).send('404 NOT FOUND')

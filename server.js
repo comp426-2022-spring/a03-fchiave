@@ -27,8 +27,8 @@ app.get('/app/', (req, res) => {
 
 app.get('/app/flip/', (req, res) => {
     // HTTP responses, using mozilla status codes
-    res.statusCode = 202;
-    res.statusMessage = 'The request has been received but not yet acted upon'
+    res.statusCode = 200;
+    res.statusMessage = 'OK'
     res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
 
     // String cleanup to get last part of path easily
@@ -48,8 +48,8 @@ app.get('/app/flips/:number', (req, res) => {
         return
     }
     // HTTP responses, using mozilla status codes
-    res.statusCode = 202;
-    res.statusMessage = 'The request has been received but not yet acted upon'
+    res.statusCode = 200;
+    res.statusMessage = 'OK'
     res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
 
 	const flips = coinFlips(req.params.number)
@@ -69,8 +69,8 @@ app.get('/app/flip/call/:call', (req, res) => {
     }
 
     // HTTP responses, using mozilla status codes
-    res.statusCode = 202;
-    res.statusMessage = 'The request has been received but not yet acted upon'
+    res.statusCode = 200;
+    res.statusMessage = 'OK'
     res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
 
 	const flip = flipACoin(req.params.call)

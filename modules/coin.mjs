@@ -61,9 +61,9 @@ function coinFlips(flips) {
 function countFlips(array) {
   var count = {tails: 0, heads: 0};
   for (var i = 0; i < array.length; i++) {
-    if(array[i] == "heads") {
+    if(array[i] == "\"heads\"") {
       count.heads++;
-    } else if (array[i] == "tails") {
+    } else if (array[i] == "\"tails\"") {
       count.tails++;
     } // we can assume only heads or tails as we are providing the array ourselves
   }

@@ -54,7 +54,7 @@ app.get('/app/flips/:number', (req, res) => {
 
 	const flips = coinFlips(req.params.number)
     const sumFlips = countFlips(flips)
-    res.end("{\"raw\":[" + flips + "],\"summary\":{\"tails\":" + sumFlips.tails + "\"heads\":" + sumFlips.heads + "}")
+    res.end("{\"raw\":[" + flips + "],\"summary\":{\"tails\":" + sumFlips.tails + ",\"heads\":" + sumFlips.heads + "}")
 });
 
 app.get('/app/flip/call/:call', (req, res) => {
